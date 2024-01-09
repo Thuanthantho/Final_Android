@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -82,6 +83,17 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
         mClient = Places.createClient(this);
         Button obtainUserLocationButton = findViewById(R.id.obtainUserLocation);
         obtainUserLocationButton.setOnClickListener(v -> getCurrentPosition(v));
+        Button goToSelectDeviceLocationButton = findViewById(R.id.goToSelectDeviceLocation);
+        goToSelectDeviceLocationButton.setOnClickListener(v->{
+            if(endLocation==null){
+                Toast.makeText(HomeMapsActivity.this, "Choose your destination first" , Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Intent intent = new Intent(HomeMapsActivity.this, SelectDeviceActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
         EditText searchLocation = findViewById(R.id.searchLocation);
         ListView autocompleteList = findViewById(R.id.autocompleteList);
         mPlacesList = new ArrayList<>();

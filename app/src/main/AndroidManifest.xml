@@ -2,11 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
 
     <application
         android:allowBackup="true"
@@ -18,10 +16,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BIKEReR"
         tools:targetApi="31">
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SelectDeviceActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyB_sIZ6bziC7B8OVm8o6AuCrEcJXFbSKk0"  />
+            android:value="AIzaSyB_sIZ6bziC7B8OVm8o6AuCrEcJXFbSKk0" />
 
         <activity
             android:name=".SplashActivity"
@@ -53,8 +57,6 @@
             android:name=".HomeMapsActivity"
             android:exported="true"
             android:theme="@style/Theme.BIKEReR" />
-
-
     </application>
 
 </manifest>
