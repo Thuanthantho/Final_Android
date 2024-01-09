@@ -5,6 +5,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.text.Editable;
@@ -24,6 +28,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -108,8 +114,6 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
         });
 
         autocompleteList.setOnItemClickListener((adapterView, view, i, l) -> {
-            // Xử lý khi người dùng chọn một địa điểm từ danh sách
-            String selectedPlace = mPlacesList.get(i);
             // Lấy thông tin về địa điểm được chọn
             AutocompletePrediction selectedPrediction = mPredictions.get(i);
             String placeId = selectedPrediction.getPlaceId();
@@ -120,28 +124,33 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
             // Lấy thông tin địa điểm
             mClient.fetchPlace(FetchPlaceRequest.builder(placeId, fields).build())
                     .addOnSuccessListener(response -> {
-                        Place place = response.getPlace();
-                        // Lấy kinh độ và vĩ độ của địa điểm và thêm vào biến end
-                        endLocation = place.getLatLng();
-                        searchLocation.setText(place.getName());
-                        // Nếu muốn hiển thị địa điểm trên bản đồ, có thể thêm đoạn mã sau:
-                        endMarker= androidMap.addMarker(new MarkerOptions().position(endLocation).title(place.getName()));
-                        androidMap.moveCamera(CameraUpdateFactory.newLatLng(endLocation));
-                        if (polylineList != null && polylineList.size() > 0) {
-                            for (Polyline polyline : polylineList) {
-                                polyline.remove();
+                        if(myLocation!=null) {
+                            Place place = response.getPlace();
+                            // Lấy kinh độ và vĩ độ của địa điểm và thêm vào biến end
+                            endLocation = place.getLatLng();
+                            searchLocation.setText(place.getName());
+                            // Nếu muốn hiển thị địa điểm trên bản đồ, có thể thêm đoạn mã sau:
+                            endMarker = androidMap.addMarker(new MarkerOptions().position(endLocation).title(place.getName()).icon(setDestinationIcon(HomeMapsActivity.this, R.drawable.baseline_location_on_24)));
+                            androidMap.moveCamera(CameraUpdateFactory.newLatLng(endLocation));
+                            if (polylineList != null && polylineList.size() > 0) {
+                                for (Polyline polyline : polylineList) {
+                                    polyline.remove();
+                                }
+                                polylineList.clear();
                             }
-                            polylineList.clear();
+                            startLocation = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
+                            drawPaths(startLocation, endLocation);
+                            //Tinh khoang cach hai vi tri
+                            float[] distance = new float[1];
+                            Location.distanceBetween(myLocation.getLatitude(), myLocation.getLongitude(), endLocation.latitude, endLocation.longitude, distance);
+                            EditText distanceText = findViewById(R.id.distance);
+                            float distanceInKm = distance[0] / 1000.0f;
+                            distanceText.setText(String.format("%.1f km", distanceInKm));
+                            autocompleteList.setVisibility(View.GONE);
                         }
-                        startLocation = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
-                        drawPaths(startLocation, endLocation);
-                        //Tinh khoang cach hai vi tri
-                        float[] distance= new float[1];
-                        Location.distanceBetween(myLocation.getLatitude(),myLocation.getLongitude(), endLocation.latitude, endLocation.longitude,distance);
-                        EditText distanceText= findViewById(R.id.distance);
-                        float distanceInKm = distance[0] / 1000.0f;
-                        distanceText.setText(String.format("%.1f km", distanceInKm));
-                        autocompleteList.setVisibility(View.GONE);
+                        else{
+                            Toast.makeText(HomeMapsActivity.this, "Click 'Get Position' button first" , Toast.LENGTH_SHORT).show();
+                        }
                     })
                     .addOnFailureListener(exception -> {
                         // Xử lý lỗi khi lấy thông tin địa điểm
@@ -149,7 +158,14 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
                     });
         });
     }
-
+    public BitmapDescriptor setDestinationIcon(Activity mapActivity, int iconID) {
+        Drawable icon = ActivityCompat.getDrawable(mapActivity, iconID);
+        icon.setBounds(0, 0, icon.getIntrinsicWidth(), icon.getIntrinsicHeight());
+        Bitmap destinationBitmap = Bitmap.createBitmap(icon.getIntrinsicWidth(), icon.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas destinationCanvas = new Canvas(destinationBitmap);
+        icon.draw(destinationCanvas);
+        return BitmapDescriptorFactory.fromBitmap(destinationBitmap);
+    }
     @SuppressLint("MissingPermission")
     public void getCurrentPosition(View view) {
         customer.getLastLocation().addOnSuccessListener(location -> {
