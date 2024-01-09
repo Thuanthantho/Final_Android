@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "BIKEReR"
+rootProject.name = "Final_Android"
 include(":app")
  

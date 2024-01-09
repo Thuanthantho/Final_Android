@@ -139,7 +139,8 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
                         float[] distance= new float[1];
                         Location.distanceBetween(myLocation.getLatitude(),myLocation.getLongitude(), endLocation.latitude, endLocation.longitude,distance);
                         EditText distanceText= findViewById(R.id.distance);
-                        distanceText.setText(String.valueOf((int) distance[0]/1000)+" km");
+                        float distanceInKm = distance[0] / 1000.0f;
+                        distanceText.setText(String.format("%.1f km", distanceInKm));
                         autocompleteList.setVisibility(View.GONE);
                     })
                     .addOnFailureListener(exception -> {
