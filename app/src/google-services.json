@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1096151599905",
+    "project_id": "bikerer-33382",
+    "storage_bucket": "bikerer-33382.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096151599905:android:e6f71f4b5cce1306e10c60",
+        "android_client_info": {
+          "package_name": "com.example.bikerer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkn16CLQ_cT5oM7QmnOnueUOp1IZu37r0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
