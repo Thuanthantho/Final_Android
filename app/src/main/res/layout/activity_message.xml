@@ -10,19 +10,35 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#252525"
-        app:title="MESSAGE"
+        app:title="Message"
         app:titleTextColor="#FFFFFF"
         app:navigationIcon="@drawable/ic_arrow_back_white" />
 
     <TextView
-        android:id="@+id/textViewMessage"
+        android:id="@+id/textViewUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="70dp"
-        android:text="Message Activity"
+        android:text="Message"
         android:textSize="40sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewUserEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/textViewUser"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/listViewUsers"
+        android:layout_width="match_parent"
+        android:layout_height="571dp"
+        android:layout_below="@id/textViewUser"
+        android:layout_marginTop="85dp" />
+
 
 </RelativeLayout>
