@@ -70,7 +70,7 @@
             android:name=".AdminActivity"
             android:exported="true"
             android:theme="@style/Theme.BIKEReR" />
-                <activity
+        <activity
             android:name=".UserActivity"
             android:exported="true"
             android:theme="@style/Theme.BIKEReR" />
