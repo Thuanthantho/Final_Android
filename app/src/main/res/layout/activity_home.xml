@@ -75,7 +75,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/bell"
+            android:src="@drawable/message"
             android:layout_gravity="center"
             android:tint="#000000"
             android:layout_margin="8dp"/>
