@@ -24,6 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
         android:background="@drawable/button_background"
+        android:textSize="18sp"
         android:text="User Activity" />
 
     <!-- Chat Button -->
@@ -35,6 +36,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:background="@drawable/button_background"
+        android:textSize="18sp"
         android:text="Message" />
 
     <!-- Log Out Button -->
@@ -46,7 +48,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:background="@drawable/button_background"
+        android:textSize="18sp"
         android:text="Log Out" />
 
 </RelativeLayout>
+
+
 
