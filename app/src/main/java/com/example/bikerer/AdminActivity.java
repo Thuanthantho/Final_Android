@@ -25,10 +25,31 @@ public class AdminActivity extends AppCompatActivity {
         textViewAdmin.setText("ADMIN");
 
         Button btnLogOut = findViewById(R.id.btnLogOut);
+
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showLogoutConfirmationDialog();
+            }
+        });
+
+        Button btnUserActivity = findViewById(R.id.btnUserActivity);
+        btnUserActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to UserActivity
+                Intent intent = new Intent(AdminActivity.this, UserActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnMessage = findViewById(R.id.btnMessage);
+        btnMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to MessageActivity
+                Intent intent = new Intent(AdminActivity.this, MessageActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -64,3 +85,4 @@ public class AdminActivity extends AppCompatActivity {
         finish(); // Close the current activity
     }
 }
+
