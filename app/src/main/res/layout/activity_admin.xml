@@ -28,24 +28,25 @@
 
     <!-- Chat Button -->
     <Button
-        android:id="@+id/btnChat"
+        android:id="@+id/btnMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnUserActivity"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:background="@drawable/button_background"
-        android:text="Chat" />
+        android:text="Message" />
 
     <!-- Log Out Button -->
     <Button
         android:id="@+id/btnLogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnChat"
+        android:layout_below="@id/btnMessage"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:background="@drawable/button_background"
         android:text="Log Out" />
 
 </RelativeLayout>
+
