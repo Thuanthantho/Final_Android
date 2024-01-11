@@ -112,13 +112,33 @@ public class LoginActivity extends AppCompatActivity {
 
         // Fetch user information
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        String userEmail = currentUser.getEmail(); // Get the user's email
 
-        // Pass the user's email to HomeActivity
-        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-        intent.putExtra("userEmail", userEmail);
-        startActivity(intent);
+        if (currentUser != null) {
+            // Check the user's role based on email and password
+            String userEmail = currentUser.getEmail();
+            if (userEmail != null && userEmail.equals("admin@gmail.com")) {
+                // User is an admin, check password
+                String userPassword = inputPassword.getText().toString();
+                if (userPassword.equals("123456")) {
+                    // Password is correct, navigate to AdminActivity
+                    Intent adminIntent = new Intent(LoginActivity.this, AdminActivity.class);
+                    startActivity(adminIntent);
+                } else {
+                    // Password is incorrect, show a message or handle it accordingly
+                    Toast.makeText(LoginActivity.this, "Incorrect password for admin account", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                // User is a regular user, navigate to HomeActivity
+                Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                homeIntent.putExtra("userEmail", userEmail);
+                startActivity(homeIntent);
+            }
+        } else {
+            // Handle the case where the current user is null
+            Toast.makeText(LoginActivity.this, "User not authenticated", Toast.LENGTH_SHORT).show();
+        }
     }
+
 
 
 
