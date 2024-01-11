@@ -66,6 +66,10 @@
             android:name=".HomeMapsActivity"
             android:exported="true"
             android:theme="@style/Theme.BIKEReR" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="true"
+            android:theme="@style/Theme.BIKEReR" />
     </application>
 
 </manifest>
