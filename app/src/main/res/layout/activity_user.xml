@@ -25,4 +25,20 @@
         android:textSize="40sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/textViewUserEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/textViewUser"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/listViewUsers"
+        android:layout_width="match_parent"
+        android:layout_height="571dp"
+        android:layout_below="@id/textViewUser"
+        android:layout_marginTop="85dp" />
+
+
 </RelativeLayout>
