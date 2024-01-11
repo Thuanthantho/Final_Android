@@ -67,6 +67,8 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
     private ArrayAdapter<String> mAdapter;
     private List<String> mPlacesList;
     private List<AutocompletePrediction> mPredictions;
+    String distance1;
+    String destinationName;
     private Marker endMarker;
     @SuppressLint("SetTextI18n")
     @Override
@@ -90,7 +92,10 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
             }
             else{
                 Intent intent = new Intent(HomeMapsActivity.this, SelectDeviceActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("distance", distance1);
+                bundle2.putString("destinationName",destinationName);
+                intent.putExtras(bundle2);
                 startActivity(intent);
             }
         });
@@ -140,6 +145,7 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
                             Place place = response.getPlace();
                             // Lấy kinh độ và vĩ độ của địa điểm và thêm vào biến end
                             endLocation = place.getLatLng();
+                            destinationName=place.getName();
                             searchLocation.setText(place.getName());
                             // Nếu muốn hiển thị địa điểm trên bản đồ, có thể thêm đoạn mã sau:
                             endMarker = androidMap.addMarker(new MarkerOptions().position(endLocation).title(place.getName()).icon(setDestinationIcon(HomeMapsActivity.this, R.drawable.baseline_location_on_24)));
@@ -157,7 +163,8 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
                             Location.distanceBetween(myLocation.getLatitude(), myLocation.getLongitude(), endLocation.latitude, endLocation.longitude, distance);
                             EditText distanceText = findViewById(R.id.distance);
                             float distanceInKm = distance[0] / 1000.0f;
-                            distanceText.setText(String.format("%.1f km", distanceInKm));
+                            distance1=String.format("%.1f", distanceInKm);
+                            distanceText.setText(distance1+ " km");
                             autocompleteList.setVisibility(View.GONE);
                         }
                         else{

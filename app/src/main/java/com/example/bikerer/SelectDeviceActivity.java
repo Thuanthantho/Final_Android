@@ -2,26 +2,47 @@ package com.example.bikerer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class SelectDeviceActivity extends AppCompatActivity {
-
+    String distance;
+    String destinationName;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_device);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+             distance= bundle.getString("distance");
+        }
+        if (bundle != null) {
+            destinationName=bundle.getString("destinationName");
+        }
         ImageView carView = findViewById(R.id.Car);
         carView.setOnClickListener(v->{
             Intent intent1 = new Intent(SelectDeviceActivity.this, PaymentActivity.class);
-            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Bundle bundle2 = new Bundle();
+            bundle2.putString("vehicle", "car");
+            bundle2.putString("distance", distance);
+            bundle2.putString("destinationName",destinationName);
+            intent1.putExtras(bundle2);
             startActivity(intent1);
         });
         ImageView motorbikeView = findViewById(R.id.Motorbike);
         motorbikeView.setOnClickListener(v->{
             Intent intent1 = new Intent(SelectDeviceActivity.this, PaymentActivity.class);
-            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Bundle bundle2 = new Bundle();
+            bundle2.putString("vehicle", "motorbike");
+            bundle2.putString("distance",distance);
+            bundle2.putString("destinationName",destinationName);
+            intent1.putExtras(bundle2);
             startActivity(intent1);
         });
     }
