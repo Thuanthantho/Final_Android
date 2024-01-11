@@ -70,6 +70,14 @@
             android:name=".AdminActivity"
             android:exported="true"
             android:theme="@style/Theme.BIKEReR" />
+                <activity
+            android:name=".UserActivity"
+            android:exported="true"
+            android:theme="@style/Theme.BIKEReR" />
+        <activity
+            android:name=".MessageActivity"
+            android:exported="true"
+            android:theme="@style/Theme.BIKEReR" />
     </application>
 
 </manifest>
