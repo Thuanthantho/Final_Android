@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -28,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
 
         // Find the ImageButton by ID
         ImageButton bigCircleButton = findViewById(R.id.bigCircleButton);
+        ImageView profileBtn = findViewById(R.id.profileIcon);
 
         // Set OnClickListener for the ImageButton
         bigCircleButton.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +38,13 @@ public class HomeActivity extends AppCompatActivity {
                 // Navigate to HomeMapsActivity when the circle button is clicked
                 Intent mapsIntent = new Intent(HomeActivity.this, HomeMapsActivity.class);
                 startActivity(mapsIntent);
+            }
+        });
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                startActivity(intent);
             }
         });
     }
