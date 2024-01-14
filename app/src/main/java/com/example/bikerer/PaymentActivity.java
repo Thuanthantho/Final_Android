@@ -22,6 +22,7 @@ public class PaymentActivity extends AppCompatActivity {
     String distance;
     BigDecimal rent;
     String destinationName;
+    String vehicle;
     DatabaseReference tripDbRef;
     @SuppressLint("SetTextI18n")
     @Override
@@ -30,7 +31,6 @@ public class PaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String vehicle;
         if (bundle != null) {
             vehicle = (String) bundle.get("vehicle");
         } else {
@@ -73,7 +73,7 @@ public class PaymentActivity extends AppCompatActivity {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String userEmail = currentUser.getEmail(); // Get the user's email
         String id = tripDbRef.push().getKey();
-        Trip trip = new Trip(id,userEmail,destinationName,distance,String.valueOf(rent.multiply(new BigDecimal("1.05"))));
+        Trip trip = new Trip(id,userEmail,destinationName, distance, vehicle, String.valueOf(rent.multiply(new BigDecimal("1.05"))));
         assert id != null;
         tripDbRef.child(id).setValue(trip);
         Toast.makeText(PaymentActivity.this,"Confirm payment successfully!",Toast.LENGTH_SHORT).show();
