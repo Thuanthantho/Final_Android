@@ -19,4 +19,26 @@ public class Trip {
     public String getId() {
         return id;
     }
+
+    //Nho generate getter khong thi se ko gui duoc du lieu len realtime database
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public String getVehicle() {
+        return vehicle;
+    }
+
+    public String getPrice() {
+        return price;
+    }
 }
