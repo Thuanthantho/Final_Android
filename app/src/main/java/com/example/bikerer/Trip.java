@@ -7,6 +7,9 @@ public class Trip {
     String distance;
     String vehicle;
     String price;
+
+    public Trip() {
+    }
     public Trip(String id,String userEmail, String destination, String distance,String vehicle, String price) {
         this.id = id;
         this.userEmail = userEmail;

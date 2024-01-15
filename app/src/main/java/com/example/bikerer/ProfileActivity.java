@@ -27,7 +27,7 @@ public class ProfileActivity extends AppCompatActivity {
         btn_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProfileActivity.this, RatingActivity.class));
+                startActivity(new Intent(ProfileActivity.this, GetTripHistoryActivity.class));
             }
         });
     }
