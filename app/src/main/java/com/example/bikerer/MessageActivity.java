@@ -1,13 +1,14 @@
 package com.example.bikerer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.view.View;
 import android.view.ViewGroup;
-
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,6 +58,20 @@ public class MessageActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
+
+        // Set item click listener for the ListView
+        listViewUsers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Get the selected user from the list
+                User selectedUser = userList.get(position);
+
+                // Pass user information to ChatActivity
+                Intent chatIntent = new Intent(MessageActivity.this, ChatActivity.class);
+                chatIntent.putExtra("recipientEmail", selectedUser.getEmail());
+                startActivity(chatIntent);
+            }
+        });
 
         // Retrieve and display user data
         displayUserData();
