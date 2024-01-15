@@ -141,8 +141,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-
-
     // Handle back button press in the action bar
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -153,3 +151,4 @@ public class LoginActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
