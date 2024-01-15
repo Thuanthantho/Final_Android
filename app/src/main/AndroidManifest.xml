@@ -81,6 +81,10 @@
             android:name=".MessageActivity"
             android:exported="true"
             android:theme="@style/Theme.BIKEReR" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="true"
+            android:theme="@style/Theme.BIKEReR" />
     </application>
 
 </manifest>
