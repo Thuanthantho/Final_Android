@@ -77,6 +77,12 @@ public class PaymentActivity extends AppCompatActivity {
         assert id != null;
         tripDbRef.child(id).setValue(trip);
         Toast.makeText(PaymentActivity.this,"Confirm payment successfully!",Toast.LENGTH_SHORT).show();
+
+        Intent intent1 = new Intent(PaymentActivity.this, HomeActivity.class);
+        intent1.putExtra("userEmail", userEmail);
+        intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent1);
+        finish();
     }
     private void updateVisibility(int ID, boolean visible) {
         View view = findViewById(ID);
