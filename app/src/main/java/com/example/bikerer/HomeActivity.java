@@ -27,9 +27,10 @@ public class HomeActivity extends AppCompatActivity {
         String welcomeMessage = "Welcome, " + userEmail;
         titleTextView.setText(welcomeMessage);
 
-        // Find the ImageButton by ID
+        // Find the ImageButton and ImageView by ID
         ImageButton bigCircleButton = findViewById(R.id.bigCircleButton);
         ImageView profileBtn = findViewById(R.id.profileIcon);
+        ImageView messageIcon = findViewById(R.id.messageIcon); // Updated ID
 
         // Set OnClickListener for the ImageButton
         bigCircleButton.setOnClickListener(new View.OnClickListener() {
@@ -40,10 +41,21 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(mapsIntent);
             }
         });
+
+        // Set OnClickListener for the profile icon
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // Set OnClickListener for the message icon
+        messageIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
                 startActivity(intent);
             }
         });
