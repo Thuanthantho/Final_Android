@@ -26,7 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
         btn_history = findViewById(R.id.btnHistory);
         btn_profile = findViewById(R.id.btnProfile);
         btnLogout = findViewById(R.id.logoutBtn);
-        tvEmail = findViewById(R.id.tvEmail);
+        tvEmail = findViewById(R.id.currentEmail);
         tvEmail.setText(currentUser.getEmail());
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
