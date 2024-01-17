@@ -24,11 +24,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Help 1"
-                    android:textSize="15sp"/>
+                    android:text="How to book driver?"
+                    android:textSize="24sp" />
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/layout_toggle_help1"
@@ -36,14 +37,105 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="help 1 content"
-                    android:textSize="30sp"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:text="Scheduled Rides are bookings made in advance (up to 7 days ahead, minimum 3 hours before) by passengers. Driver-partners can accept this type of bookings manually via the Booking Planner section, and receive a scheduling fee for every booking accepted."
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/btn_help2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="How to update profile info?"
+                    android:textSize="24sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_toggle_help2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:text="You can change your name and phone number within the app under SETTINGS. If you need to change your email, please submit a Help ticket within the app with ... Include a photograph in your Grab profile to facilitate a smooth pick up experience."
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/btn_help3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="How to Pay through Visa card?"
+                    android:textSize="24sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_toggle_help3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:text="Your GrabPay Wallet balance IS your GrabPay Card balance! Simply cash in your GrabPay Wallet via your linked bank account (BDO, BPI, UnionBank), online banking or e-wallets with InstaPay, in stores (7-11, SM Business Centers, Cebauna, and more), debit/credit card, or directly with your driver during a ride."
+                    android:textSize="30sp" />
             </LinearLayout>
 
 
