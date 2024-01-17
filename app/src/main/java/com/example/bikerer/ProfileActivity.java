@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileActivity extends AppCompatActivity {
-    Button btn_help, btn_history, btn_profile;
+    Button btn_help, btn_history, btn_profile, btnLogout;
     TextView tvEmail;
     private FirebaseAuth mAuth;
     @Override
@@ -25,8 +25,19 @@ public class ProfileActivity extends AppCompatActivity {
         btn_help = findViewById(R.id.btnHelp);
         btn_history = findViewById(R.id.btnHistory);
         btn_profile = findViewById(R.id.btnProfile);
+        btnLogout = findViewById(R.id.logoutBtn);
         tvEmail = findViewById(R.id.tvEmail);
         tvEmail.setText(currentUser.getEmail());
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
