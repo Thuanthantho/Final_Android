@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">BIKEReR</string>
     <string name="title_activity_home_maps">HomeMapsActivity</string>
+    <string name="select">Select Gender</string>
 </resources>
