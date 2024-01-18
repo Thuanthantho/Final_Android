@@ -95,6 +95,8 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
                 Bundle bundle2 = new Bundle();
                 bundle2.putString("distance", distance1);
                 bundle2.putString("destinationName",destinationName);
+                bundle2.putString("latitude", String.valueOf(myLocation.getLatitude()));
+                bundle2.putString("longitude", String.valueOf(myLocation.getLongitude()));
                 intent.putExtras(bundle2);
                 startActivity(intent);
             }
@@ -158,13 +160,13 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
                             }
                             startLocation = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
                             drawPaths(startLocation, endLocation);
-                            //Tinh khoang cach hai vi tri
-                            float[] distance = new float[1];
-                            Location.distanceBetween(myLocation.getLatitude(), myLocation.getLongitude(), endLocation.latitude, endLocation.longitude, distance);
-                            EditText distanceText = findViewById(R.id.distance);
-                            float distanceInKm = distance[0] / 1000.0f;
-                            distance1=String.format("%.1f", distanceInKm);
-                            distanceText.setText(distance1+ " km");
+//                            //Tinh khoang cach hai vi tri
+//                            float[] distance = new float[1];
+//                            Location.distanceBetween(myLocation.getLatitude(), myLocation.getLongitude(), endLocation.latitude, endLocation.longitude, distance);
+//                            EditText distanceText = findViewById(R.id.distance);
+//                            float distanceInKm = distance[0] / 1000.0f;
+//                            distance1=String.format("%.1f", distanceInKm);
+//                            distanceText.setText(distance1+ " km");
                             autocompleteList.setVisibility(View.GONE);
                         }
                         else{
@@ -275,8 +277,10 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
 
     }
 
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
     @Override
     public void onRoutingSuccess(ArrayList<Route> route, int effectiveRoute) {
+        float totalDistance = 0;
         if (polylineList != null) {
             polylineList.clear();
         }
@@ -286,17 +290,32 @@ public class HomeMapsActivity extends FragmentActivity implements OnMapReadyCall
         polylineList = new ArrayList<>();
         for (int a = 0; a <route.size(); a+=1) {
             if (a == effectiveRoute) {
-                customPolylineOptions.addAll(route.get(effectiveRoute).getPoints());
+                List<LatLng> routePoints = route.get(effectiveRoute).getPoints();
+                customPolylineOptions.addAll(routePoints);
                 customPolylineOptions.width(5);
                 customPolylineOptions.color(getResources().getColor(androidx.cardview.R.color.cardview_dark_background));
                 Polyline polyline = androidMap.addPolyline(customPolylineOptions);
                 polylineList.add(polyline);
+                for (int b = 0; b < routePoints.size() - 1; b++) {
+                    totalDistance += distanceBetweenTwoPoints(routePoints.get(b), routePoints.get(b + 1));
+                }
             }
         }
+        //Tinh dung quang duong da di chu khong phai la khoang cach giua hai diem
+        EditText distanceText=findViewById(R.id.distance);
+        float distanceInKm = totalDistance/ 1000.0f;
+        distance1=String.format("%.1f", distanceInKm);
+        distanceText.setText(distance1+ " km");
     }
 
     @Override
     public void onRoutingCancelled() {
 
+    }
+    // Hàm tính khoảng cách giữa hai điểm
+    private float distanceBetweenTwoPoints(LatLng point1, LatLng point2) {
+        float[] result = new float[1];
+        Location.distanceBetween(point1.latitude, point1.longitude, point2.latitude, point2.longitude, result);
+        return result[0];
     }
 }

@@ -37,6 +37,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/mustang" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView" />
     </LinearLayout>
 
     <LinearLayout
@@ -64,12 +71,23 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/driver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginBottom="565dp"
+        android:textSize="17dp" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="42dp"
-        android:layout_marginTop="163dp"
+        android:layout_marginTop="169dp"
         android:text="Charge"
         android:textSize="17dp"
         android:textStyle="bold" />
@@ -157,16 +175,30 @@
             android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="260dp"
+        android:gravity="top">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Distance: "
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-
-
-
-
-
-
-
-
+        <TextView
+            android:id="@+id/distancePayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/confirmPaymentButton"
@@ -176,6 +208,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="106dp"
-        android:layout_marginBottom="225dp"
+        android:layout_marginBottom="200dp"
         android:text="CONFIRM PAYMENT" />
+
 </RelativeLayout>

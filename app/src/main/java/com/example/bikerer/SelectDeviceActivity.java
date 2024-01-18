@@ -12,6 +12,8 @@ import android.widget.Toast;
 public class SelectDeviceActivity extends AppCompatActivity {
     String distance;
     String destinationName;
+    String latitude;
+    String longitude;
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,12 @@ public class SelectDeviceActivity extends AppCompatActivity {
         if (bundle != null) {
             destinationName=bundle.getString("destinationName");
         }
+        if(bundle!=null){
+            latitude=bundle.getString("latitude");
+        }
+        if(bundle!=null){
+            longitude=bundle.getString("longitude");
+        }
         ImageView carView = findViewById(R.id.Car);
         carView.setOnClickListener(v->{
             Intent intent1 = new Intent(SelectDeviceActivity.this, PaymentActivity.class);
@@ -32,6 +40,8 @@ public class SelectDeviceActivity extends AppCompatActivity {
             bundle2.putString("vehicle", "car");
             bundle2.putString("distance", distance);
             bundle2.putString("destinationName",destinationName);
+            bundle2.putString("latitude",latitude);
+            bundle2.putString("longitude",longitude);
             intent1.putExtras(bundle2);
             startActivity(intent1);
         });
@@ -42,6 +52,8 @@ public class SelectDeviceActivity extends AppCompatActivity {
             bundle2.putString("vehicle", "motorbike");
             bundle2.putString("distance",distance);
             bundle2.putString("destinationName",destinationName);
+            bundle2.putString("latitude",latitude);
+            bundle2.putString("longitude",longitude);
             intent1.putExtras(bundle2);
             startActivity(intent1);
         });

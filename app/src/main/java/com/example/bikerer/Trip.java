@@ -7,16 +7,18 @@ public class Trip {
     String distance;
     String vehicle;
     String price;
+    String driver;
 
     public Trip() {
     }
-    public Trip(String id,String userEmail, String destination, String distance,String vehicle, String price) {
+    public Trip(String id,String userEmail, String destination, String distance,String vehicle, String price, String driver) {
         this.id = id;
         this.userEmail = userEmail;
         this.destination = destination;
         this.distance = distance;
         this.vehicle = vehicle;
-        this.price = price; 
+        this.price = price;
+        this.driver=driver;
     }
 
     public String getId() {
@@ -43,5 +45,9 @@ public class Trip {
 
     public String getPrice() {
         return price;
+    }
+
+    public String getDriver() {
+        return driver;
     }
 }
