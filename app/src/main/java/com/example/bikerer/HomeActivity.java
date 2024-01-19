@@ -52,13 +52,13 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         // Set OnClickListener for the message icon
-        /* messageIcon.setOnClickListener(new View.OnClickListener() {
+        messageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
     }
 }
 
