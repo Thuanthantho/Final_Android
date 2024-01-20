@@ -39,9 +39,10 @@
         android:textSize="18sp"
         android:text="Message" />
 
-    <!-- Log Out Button -->
+
+    <!-- Add SOS Button -->
     <Button
-        android:id="@+id/btnLogOut"
+        android:id="@+id/btnSOS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnMessage"
@@ -49,9 +50,23 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/button_background"
         android:textSize="18sp"
+        android:text="SOS" />
+
+
+    <!-- Log Out Button -->
+    <Button
+        android:id="@+id/btnLogOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSOS"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_background"
+        android:textSize="18sp"
         android:text="Log Out" />
 
 </RelativeLayout>
+
 
 
 
