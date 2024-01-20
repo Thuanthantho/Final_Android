@@ -27,6 +27,7 @@ import java.math.BigDecimal;
 
 public class PaymentActivity extends AppCompatActivity {
     String distance;
+    String status = "Pending";
     BigDecimal rent;
     String destinationName;
     String vehicle;
@@ -167,14 +168,14 @@ public class PaymentActivity extends AppCompatActivity {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String userEmail = currentUser.getEmail(); // Get the user's email
         String id = tripDbRef.push().getKey();
-        Trip trip = new Trip(id,userEmail,destinationName, distance, vehicle, String.valueOf(rent.multiply(new BigDecimal("1.05"))), closestDriverName);
+        Trip trip = new Trip(id,userEmail,destinationName, distance, vehicle, String.valueOf(rent.multiply(new BigDecimal("1.05"))), closestDriverName, status);
         assert id != null;
         tripDbRef.child(id).setValue(trip);
-        Toast.makeText(PaymentActivity.this,"Confirm payment successfully!",Toast.LENGTH_SHORT).show();
+        Toast.makeText(PaymentActivity.this,"Finding Drivers... Please Wait!",Toast.LENGTH_SHORT).show();
 
-        Intent intent1 = new Intent(PaymentActivity.this, HomeActivity.class);
+        Intent intent1 = new Intent(PaymentActivity.this, PendingActivity.class);
         intent1.putExtra("userEmail", userEmail);
-        intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent1);
         finish();
     }

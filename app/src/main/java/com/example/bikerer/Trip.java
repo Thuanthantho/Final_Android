@@ -7,11 +7,14 @@ public class Trip {
     String distance;
     String vehicle;
     String price;
+
+    String status;
     String driver;
 
     public Trip() {
     }
-    public Trip(String id,String userEmail, String destination, String distance,String vehicle, String price, String driver) {
+
+    public Trip(String id, String userEmail, String destination, String distance, String vehicle, String price, String driver, String status) {
         this.id = id;
         this.userEmail = userEmail;
         this.destination = destination;
@@ -19,6 +22,7 @@ public class Trip {
         this.vehicle = vehicle;
         this.price = price;
         this.driver=driver;
+        this.status = status;
     }
 
     public String getId() {
@@ -49,5 +53,13 @@ public class Trip {
 
     public String getDriver() {
         return driver;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

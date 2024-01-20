@@ -53,4 +53,5 @@ dependencies {
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.google.android.libraries.places:places:3.3.0")
     implementation("com.google.firebase:firebase-database-ktx:20.3.0")
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.28")
 }
