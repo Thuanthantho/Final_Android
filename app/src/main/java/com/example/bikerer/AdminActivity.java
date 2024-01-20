@@ -52,6 +52,18 @@ public class AdminActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Add SOS button click event
+        Button btnSOS = findViewById(R.id.btnSOS);
+        btnSOS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Navigate to SosActivity
+                Intent intent = new Intent(AdminActivity.this, SosActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void showLogoutConfirmationDialog() {
@@ -84,5 +96,7 @@ public class AdminActivity extends AppCompatActivity {
         startActivity(intent);
         finish(); // Close the current activity
     }
+
+
 }
 
