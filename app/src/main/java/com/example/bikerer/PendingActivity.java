@@ -31,9 +31,8 @@ public class PendingActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         String UserEmail = currentUser.getEmail();
-        Button statusBtn = findViewById(R.id.updateStatus);
 
-        tripDbRef = FirebaseDatabase.getInstance().getReference("Trips");
+        tripDbRef = FirebaseDatabase.getInstance().getReference("Trips-pending");
 
         tripDbRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -49,9 +48,7 @@ public class PendingActivity extends AppCompatActivity {
                         price = trips.price;
                         driver = trips.driver;
                         status = trips.status;
-                    }
-
-                    if(Objects.equals(trips.userEmail, UserEmail) && Objects.equals(trips.status, "Received")) {
+                    }else{
                         Toast.makeText(PendingActivity.this,"Driver Found!",Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(PendingActivity.this, HomeActivity.class);
@@ -67,22 +64,5 @@ public class PendingActivity extends AppCompatActivity {
 
             }
         });
-
-        statusBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String newStatus = "Received";
-                updateData(id,userEmail,destination, distance, vehicle,price, driver, newStatus);
-            }
-        });
-
-    }
-
-    private void updateData(String id,String userEmail, String destination, String distance, String vehicle, String price, String driver, String status){
-
-        //creating database reference
-        DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference("Trips").child(id);
-        Trip trip = new Trip(id,userEmail,destination, distance, vehicle,price, driver, status);
-        DbRef.setValue(trip);
     }
 }

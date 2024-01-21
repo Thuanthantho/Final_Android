@@ -127,6 +127,11 @@ public class LoginActivity extends AppCompatActivity {
                     // Password is incorrect, show a message or handle it accordingly
                     Toast.makeText(LoginActivity.this, "Incorrect password for admin account", Toast.LENGTH_SHORT).show();
                 }
+            } else if (userEmail.equals("driver1@gmail.com") || userEmail.equals("driver2@gmail.com") || userEmail.equals("driver3@gmail.com") || userEmail.equals("driver4@gmail.com") || userEmail.equals("driver5@gmail.com") || userEmail.equals("driver6@gmail.com"))
+            {
+                Intent driverIntent = new Intent(LoginActivity.this, DriverProfileActivity.class);
+                driverIntent.putExtra("driverEmail", userEmail);
+                startActivity(driverIntent);
             } else {
                 // User is a regular user, navigate to HomeActivity
                 Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
