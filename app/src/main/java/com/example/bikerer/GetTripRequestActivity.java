@@ -13,11 +13,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -64,13 +59,11 @@ public class GetTripRequestActivity extends AppCompatActivity {
             }
         });
 
-        tripRequestListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        tripRequestListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Trip trips = tripsList.get(position);
                 showUpdateDialog(trips.getId(), trips.getUserEmail(), trips.getDestination(), trips.getDistance(), trips.getVehicle(), trips.getPrice(), trips.getDriver());
-
-                return false;
             }
         });
     }
@@ -101,6 +94,9 @@ public class GetTripRequestActivity extends AppCompatActivity {
 
                 deleteRecord(id);
                 alertDialog.dismiss();
+
+                startActivity(new Intent(GetTripRequestActivity.this, OnTheWayActivity.class));
+                finish();
             }
 
         });
@@ -116,13 +112,16 @@ public class GetTripRequestActivity extends AppCompatActivity {
     private void updateData(String id, String userEmail, String destination, String distance, String vehicle, String price, String driver, String status){
 
         //creating database reference
+
         DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference("Trips");
-        Trip trip = new Trip(id, userEmail, destination, distance, vehicle, price, driver, status);
-        DbRef.setValue(trip);
+        String newId = DbRef.push().getKey();
+        Trip trip = new Trip(newId, userEmail, destination, distance, vehicle, price, driver, status);
+        assert newId != null;
+        DbRef.child(newId).setValue(trip);
     }
 
     private void deleteRecord(String id){
-        DatabaseReference DbRef = FirebaseDatabase.getInstance().getReference("Trips-pending").child(id);
-        DbRef.removeValue();
+        DatabaseReference pendingDbRef = FirebaseDatabase.getInstance().getReference("Trips-pending").child(id);
+        pendingDbRef.removeValue();
     }
 }

@@ -34,7 +34,6 @@ public class RequestAdapter extends ArrayAdapter{
         TextView tvPrice = listItemView.findViewById(R.id.priceRequest);
         TextView tvVehicle = listItemView.findViewById(R.id.vehicleRequest);
         TextView tvDistance = listItemView.findViewById(R.id.distanceRequest);
-        Button acceptRequestBtn = listItemView.findViewById(R.id.acceptBtn);
 
         Trip trips = requestList.get(position);
 
