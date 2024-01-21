@@ -115,7 +115,6 @@ public class PaymentActivity extends AppCompatActivity {
 //                                }
                                 float[] distance = new float[1];
                                 Location.distanceBetween(Double.parseDouble(latitude),Double.parseDouble(longitude), Double.parseDouble(driver.getLatitude()), Double.parseDouble(driver.getLongitude()), distance);
-                                Toast.makeText(PaymentActivity.this, String.valueOf(distance[0] / 1000.0f), Toast.LENGTH_LONG).show();
                                 if (distance[0] < shortestCarDistance[0]) {
                                     shortestCarDistance[0] = distance[0];
                                     closestDriverName = driver.getName();
@@ -143,7 +142,6 @@ public class PaymentActivity extends AppCompatActivity {
                             if (Objects.equals(driver.getVehicle(), "motorbike")) {
                                 float[] distance = new float[1];
                                 Location.distanceBetween(Double.parseDouble(latitude),Double.parseDouble(longitude), Double.parseDouble(driver.getLatitude()), Double.parseDouble(driver.getLongitude()), distance);
-                                Toast.makeText(PaymentActivity.this, String.valueOf(distance[0] / 1000.0f), Toast.LENGTH_LONG).show();
                                 if (distance[0] < shortestMotorbikeDistance[0]) {
                                     shortestMotorbikeDistance[0] = distance[0];
                                     closestDriverName = driver.getName();

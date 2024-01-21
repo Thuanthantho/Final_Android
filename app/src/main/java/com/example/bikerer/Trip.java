@@ -29,7 +29,6 @@ public class Trip {
         return id;
     }
 
-    //Nho generate getter khong thi se ko gui duoc du lieu len realtime database
 
     public String getUserEmail() {
         return userEmail;
@@ -61,5 +60,33 @@ public class Trip {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
+    public void setVehicle(String vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public void setDriver(String driver) {
+        this.driver = driver;
     }
 }
