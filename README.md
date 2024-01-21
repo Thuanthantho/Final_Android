@@ -21,9 +21,25 @@ In this project, you can register new account or use created our account to use:
   - email: admin@gmail.com
   - password: 123456
 
-+ Driver:
++ Drivers:
+  1: 
   - email: driver1@gmail.com 
   - password: driver1
+  2: 
+  - email: driver2@gmail.com 
+  - password: driver2
+  3:
+  - email: driver3@gmail.com 
+  - password: driver3
+  4: 
+  - email: driver4@gmail.com 
+  - password: driver4
+  5: 
+  - email: driver5@gmail.com 
+  - password: driver5
+  6:
+  - email: driver6@gmail.com 
+  - password: driver6
  
 ----------------------------------------------------
 
@@ -33,11 +49,12 @@ Before presentation:
 
 
 When we finish:
-+ We have finished all functions of users like fromn the beginning like register account to login, then choose the location, and then they can choose the vehicle what they want and confirm payment.
++ We have finished all functions of users like from the beginning like register account to login, then choose the location, and then they can choose the vehicle what they want and confirm payment.
 + After that, they can edit profile like name, age. **Moreover, we also finish the sos button, back navigation, driver role and trip 
-status.**
+status and chat activity between users and the admin**
 + Adding trip status "pending" and "received", when customer book the drive, the trip will has pending status. They need to wait for the
 App finding the nearest driver which has least drive that day and also has the vehicle that the customer require. Then after the driver accept that request, the trip status will update to "Received".
 + Besides that, the admin function to check full user activitys like profile and their trip history of all users.
++ Finally, users can have real-time communication with the admin. 
   
-+ Drawbacks: chat activity not finished.
++ Drawbacks: one user can not communicate with other users. 

@@ -115,7 +115,9 @@ public class GetTripRequestActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                deleteRecord(id);
                 alertDialog.dismiss();
+                Toast.makeText(GetTripRequestActivity.this, "Cancel trip successfully!", Toast.LENGTH_SHORT).show();
             }
         });
     }

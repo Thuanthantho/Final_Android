@@ -107,12 +107,6 @@ public class PaymentActivity extends AppCompatActivity {
                         assert driver != null;
                         if (Objects.equals(vehicle, "car")) {
                             if (Objects.equals(driver.getVehicle(), "car")) {
-//                                Location.distanceBetween(Double.parseDouble(latitude),Double.parseDouble(longitude), Double.parseDouble(driver.getLatitude()), Double.parseDouble(driver.getLongitude()), distance);
-//                                Toast.makeText(PaymentActivity.this, String.valueOf(distance[0] / 1000.0f), Toast.LENGTH_LONG).show();
-//                                if(distance[0]<shortestCarDistance[0]){
-//                                    shortestCarDistance[0]=distance[0];
-//                                    closestDriverName = driver.name;
-//                                }
                                 float[] distance = new float[1];
                                 Location.distanceBetween(Double.parseDouble(latitude),Double.parseDouble(longitude), Double.parseDouble(driver.getLatitude()), Double.parseDouble(driver.getLongitude()), distance);
                                 if (distance[0] < shortestCarDistance[0]) {
@@ -120,24 +114,12 @@ public class PaymentActivity extends AppCompatActivity {
                                     closestDriverName = driver.getName();
                                     maxNumTrips = Integer.parseInt(driver.getNumTrips());
                                 } else if (distance[0] == shortestCarDistance[0] && Integer.parseInt(driver.getNumTrips()) > maxNumTrips) {
-                                    // Nếu có nhiều driver có cùng shortestDistance, chọn driver có numTrips nhỏ nhất
                                     maxNumTrips = Integer.parseInt(driver.getNumTrips());
                                     closestDriverName = driver.getName();
                                 }
                             }
 
                         }
-//                        if(Objects.equals(vehicle, "motorbike")){
-//                            if ( Objects.equals(driver.getVehicle(), "motorbike")) {
-//                                Location.distanceBetween(Double.parseDouble(latitude),Double.parseDouble(longitude), Double.parseDouble(driver.getLatitude()), Double.parseDouble(driver.getLongitude()), distance);
-//                                Toast.makeText(PaymentActivity.this, String.valueOf(distance[0] / 1000.0f), Toast.LENGTH_LONG).show();
-//                                if(distance[0]<shortestMotorbikeDistance[0]){
-//                                    shortestMotorbikeDistance[0]=distance[0];
-//                                    closestDriverName = driver.name;
-//                                }
-//                            }
-//
-//                        }
                         if (Objects.equals(vehicle, "motorbike")) {
                             if (Objects.equals(driver.getVehicle(), "motorbike")) {
                                 float[] distance = new float[1];
@@ -147,7 +129,6 @@ public class PaymentActivity extends AppCompatActivity {
                                     closestDriverName = driver.getName();
                                     maxNumTrips = Integer.parseInt(driver.getNumTrips());
                                 } else if (distance[0] == shortestMotorbikeDistance[0] && Integer.parseInt(driver.getNumTrips()) > maxNumTrips) {
-                                    // Nếu có nhiều driver có cùng shortestDistance, chọn driver có numTrips nhỏ nhất
                                     maxNumTrips = Integer.parseInt(driver.getNumTrips());
                                     closestDriverName = driver.getName();
                                 }
@@ -162,9 +143,8 @@ public class PaymentActivity extends AppCompatActivity {
             });
     }
     private void insertTripData(){
-        // Fetch user information
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        String userEmail = currentUser.getEmail(); // Get the user's email
+        String userEmail = currentUser.getEmail();
         String id = tripDbRef.push().getKey();
         Trip trip = new Trip(id,userEmail,destinationName, distance, vehicle, String.valueOf(rent.multiply(new BigDecimal("1.05"))), closestDriverName, status);
         assert id != null;
@@ -173,7 +153,6 @@ public class PaymentActivity extends AppCompatActivity {
 
         Intent intent1 = new Intent(PaymentActivity.this, PendingActivity.class);
         intent1.putExtra("userEmail", userEmail);
-        //intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent1);
         finish();
     }
