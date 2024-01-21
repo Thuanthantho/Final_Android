@@ -56,5 +56,17 @@ status and chat activity between users and the admin**
 App finding the nearest driver which has least drive that day and also has the vehicle that the customer require. Then after the driver accept that request, the trip status will update to "Received".
 + Besides that, the admin function to check full user activitys like profile and their trip history of all users.
 + Finally, users can have real-time communication with the admin. 
-  
-+ Drawbacks: one user can not communicate with other users. 
+
+
+----------------------------------------------------
+
++ Drawbacks: one user can not communicate with other users, jut only interact user with admin.
++ Technology use:
+  - Android Studio (develop and run the project)
+  - Figma (to have UI/UX at the beginning)
+  - Google Firebase (to store data map,account and related information)
++ Bug: nothing
+
+----------------------------------------------------
+Work distribution:
++ We decleared that our three members distrubtire our work to this project clearly, effectively and fairly. So each member should have the same score about distribution in this project.
