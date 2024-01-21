@@ -89,7 +89,7 @@ public class PaymentActivity extends AppCompatActivity {
 
             TextView name=findViewById(R.id.destinationName);
             name.setText(destinationName);
-            tripDbRef = FirebaseDatabase.getInstance().getReference("Trips");
+            tripDbRef = FirebaseDatabase.getInstance().getReference("Trips-pending");
             Button confirmPaymentButton=findViewById(R.id.confirmPaymentButton);
             confirmPaymentButton.setOnClickListener(v->insertTripData());
             TextView driverTextView = findViewById(R.id.driver);
