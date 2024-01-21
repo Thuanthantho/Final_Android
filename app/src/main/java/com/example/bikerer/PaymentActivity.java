@@ -102,8 +102,8 @@ public class PaymentActivity extends AppCompatActivity {
                     int maxNumTrips = Integer.MAX_VALUE;
                     shortestCarDistance[0] = Float.POSITIVE_INFINITY;
                     shortestMotorbikeDistance[0] = Float.POSITIVE_INFINITY;
-                    for (DataSnapshot driverDatasnap : dataSnapshot.getChildren()) {
-                        Driver driver = driverDatasnap.getValue(Driver.class);
+                    for (DataSnapshot driverDataSnapshot : dataSnapshot.getChildren()) {
+                        Driver driver = driverDataSnapshot.getValue(Driver.class);
                         assert driver != null;
                         if (Objects.equals(vehicle, "car")) {
                             if (Objects.equals(driver.getVehicle(), "car")) {

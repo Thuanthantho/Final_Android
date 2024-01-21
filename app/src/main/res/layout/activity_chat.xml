@@ -1,29 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    android:background="#73D9D9">
+    android:layout_width="match_parent">
 
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#252525"
-        app:title="Chat"
-        app:titleTextColor="#FFFFFF"
-        app:navigationIcon="@drawable/ic_arrow_back_white" />
+        android:layout_height="wrap_content">
 
-    <!-- Customize the layout as needed for your chat activity -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chat Activity"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:layout_centerInParent="true"/>
+        <!-- Toolbar -->
 
-    <!-- You can add RecyclerView, EditText, Button, etc., for the chat interface -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#252525"
+            app:title="Chat"
+            app:titleTextColor="#FFFFFF"
+            app:navigationIcon="@drawable/ic_arrow_back_white" />
 
-</RelativeLayout>
+        <!-- ListView -->
+
+        <ListView
+            android:id="@+id/messageAdapter"
+            android:layout_width="match_parent"
+            android:layout_height="595dp"
+            android:layout_below="@id/toolbar"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="-7dp"
+            android:padding="10dp" />
+
+        <!-- LinearLayout -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="670dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:hint="Type your message here"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/sendButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="SEND" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
