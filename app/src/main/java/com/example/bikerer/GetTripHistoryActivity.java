@@ -1,10 +1,13 @@
 package com.example.bikerer;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -33,6 +36,15 @@ public class GetTripHistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_get_trip_history);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        String currentUserEmail = currentUser.getEmail();
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         tripListView = findViewById(R.id.rvTrip);
         tripsList = new ArrayList<>();
@@ -46,7 +58,8 @@ public class GetTripHistoryActivity extends AppCompatActivity {
 
                 for (DataSnapshot tripDatasnap : dataSnapshot.getChildren()){
                     Trip trips = tripDatasnap.getValue(Trip.class);
-                    if(Objects.equals(trips.userEmail, currentUser.getEmail())) {
+                    assert trips != null;
+                    if(Objects.equals(trips.getUserEmail(), currentUserEmail)) {
                         tripsList.add(trips);
                     }
                 }
@@ -60,5 +73,14 @@ public class GetTripHistoryActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,12 +1,15 @@
 package com.example.bikerer;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -33,6 +36,14 @@ public class GetTripRequestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_get_trip_request);
         Intent intent = getIntent();
         String driverName = intent.getStringExtra("driverName");
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         tripRequestListView = findViewById(R.id.tripRequestList);
         tripsList = new ArrayList<>();
@@ -123,5 +134,14 @@ public class GetTripRequestActivity extends AppCompatActivity {
     private void deleteRecord(String id){
         DatabaseReference pendingDbRef = FirebaseDatabase.getInstance().getReference("Trips-pending").child(id);
         pendingDbRef.removeValue();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
