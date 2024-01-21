@@ -25,7 +25,7 @@ In this project, you can register new account or use created our account to use:
 
 Before presentation:
 + We have do some functions such as login, register, map and routing, confirming payment, edit profile, save full data of users in realtime database.
-+ Teacher feebacks: sos button, back navigation, driver role, trip status. 
++ Teacher feedbacks: sos button, back navigation, driver role, trip status. 
 
 
 When we finish:
